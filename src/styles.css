@@ -1,0 +1,2695 @@
+:root {
+  --bg: #eef2f6;
+  --surface: #ffffff;
+  --ink: #0f1d2b;
+  --muted: #4a5a68;
+  --line: #d3dce5;
+  --brand: #0a6c8f;
+  --brand-dark: #07506b;
+  --stage-1: #0b1b2b;
+  --stage-2: #15395a;
+  --accent: #ffb74d;
+  --focus: #ff9800;
+  --radius: 16px;
+  font-family: 'Noto Sans Lao', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+body {
+  background: var(--bg);
+  line-height: 1.75; /* Lao stacked vowels/tone marks need extra leading */
+  font-size: 16px;
+}
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: 0;
+}
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.faint {
+  color: var(--muted);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  min-height: 44px;
+  padding: 6px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--brand-dark);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: #e3eaf1;
+}
+.btn-lang {
+  min-width: 64px;
+  justify-content: center;
+  font-weight: 700;
+}
+.btn-tool {
+  min-height: 38px;
+  background: rgba(11, 27, 43, 0.7);
+  color: #e8f1f8;
+  border-color: rgba(255, 255, 255, 0.25);
+  font-size: 0.9rem;
+}
+.btn-tool.on {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.chip {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #dff1f8;
+  color: var(--brand-dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+/* ---------- header ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 4px;
+}
+
+/* ---------- home ---------- */
+.home {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 16px 56px;
+}
+.hero {
+  padding: 36px 28px;
+  border-radius: 24px;
+  color: #fff;
+  background: radial-gradient(ellipse at 80% 20%, #1e5a86, transparent 60%), linear-gradient(135deg, var(--stage-1), var(--stage-2));
+}
+.hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.3;
+}
+.hero p {
+  margin-top: 8px;
+  color: #cfe2f0;
+  font-size: 1.1rem;
+}
+.pick {
+  margin: 32px 0 14px;
+  font-size: 1.25rem;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--c);
+}
+.card.soon {
+  opacity: 0.6;
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-top h3 {
+  font-size: 1.35rem;
+}
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.card .btn {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+.card-topic .chip {
+  margin: 0 6px 0 0;
+}
+
+/* ---------- lesson ---------- */
+.lesson-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 61px);
+}
+.lesson-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 0;
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.lesson-title {
+  font-size: 1.3rem;
+  flex: 1 1 200px;
+}
+.bar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.seg {
+  display: inline-flex;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.seg button {
+  min-height: 44px;
+  padding: 4px 18px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.seg button.on {
+  background: var(--brand);
+  color: #fff;
+}
+
+.lesson-wrap[data-stage='bohr'] {
+  --ctl: 235px;
+}
+.lesson {
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(320px, 1fr);
+  gap: 16px;
+  padding: 12px 16px;
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+.stage-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.stage {
+  position: relative;
+  height: clamp(340px, calc(100vh - 250px - var(--ctl, 90px)), 760px);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, var(--stage-2), var(--stage-1) 75%);
+  box-shadow: 0 6px 24px rgba(11, 27, 43, 0.25);
+}
+.stage canvas {
+  display: block;
+  touch-action: none;
+}
+.stage-badge {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  pointer-events: none;
+  line-height: 1.35;
+}
+.stage-badge .year {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--accent);
+}
+.stage-badge .who {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.stage-badge .model {
+  color: #cfe2f0;
+}
+.stage-tools {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.legend {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  list-style: none;
+  padding: 6px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  background: rgba(11, 27, 43, 0.65);
+  border-radius: 12px;
+  color: #e8f1f8;
+  font-size: 0.88rem;
+  max-width: 70%;
+}
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.stage-hint {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  color: #a9c2d6;
+  font-size: 0.8rem;
+  text-align: right;
+  max-width: 40%;
+  line-height: 1.5;
+}
+.webgl-fail {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #fff;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ---------- controls under the stage ---------- */
+.controls {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+.ctl-row {
+  display: flex;
+  align-items: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+}
+.eq {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.count {
+  font-weight: 500;
+}
+.note {
+  color: var(--muted);
+}
+.bohr-ctl {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.el-strip {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(0, 1fr));
+  gap: 4px;
+}
+@media (max-width: 960px) {
+  .el-strip {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+  }
+}
+.el {
+  position: relative;
+  min-height: 48px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: #f7fafc;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.2;
+  padding: 15px 0 3px;
+}
+.el small {
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.el.on {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.el.on small {
+  color: #d3edf7;
+}
+.bohr-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+.el-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.el-sym {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  flex: none;
+  border-radius: 14px;
+  background: var(--stage-1);
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+.el-sym b {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.el-sym small {
+  position: absolute;
+  font-size: 0.8rem;
+  color: #9fc2dc;
+}
+.el-sym small:first-child {
+  top: 6px;
+  left: 9px;
+}
+.el-sym small:last-child {
+  bottom: 6px;
+  left: 9px;
+}
+.el-facts {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 4px 0 8px;
+}
+.dot:first-child {
+  margin-left: 0;
+}
+.dot.big {
+  width: 14px;
+  height: 14px;
+  margin: 0 8px 0 0;
+  border: 1px solid #0003;
+  vertical-align: middle;
+}
+.excite {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.sel-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sel-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.92rem;
+}
+.sel-row select {
+  min-height: 40px;
+  padding: 0 8px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.log {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.9rem;
+  min-height: 60px;
+}
+.log-item {
+  line-height: 1.5;
+}
+
+/* ---------- panel ---------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  background: #f4f7fa;
+}
+.tabs button {
+  flex: 1;
+  min-height: 46px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+}
+.tabs button.on {
+  background: var(--surface);
+  border-bottom-color: var(--brand);
+  color: var(--brand-dark);
+  font-weight: 700;
+}
+.tab-body {
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tab-body h2 {
+  font-size: 1.25rem;
+}
+.tab-body h3 {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--brand-dark);
+}
+.lead {
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+.ideas {
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ideas.limits li::marker {
+  color: #d9534f;
+}
+.objs {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.objs li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.objs em {
+  font-style: normal;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.objs em.full {
+  color: #1b7f3a;
+}
+.objs em.partial {
+  color: #b26a00;
+}
+.draft {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #fff4dc;
+  color: #7a4b00;
+  font-size: 0.88rem;
+}
+
+/* ---------- timeline ---------- */
+.timeline {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+.timeline ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  justify-content: center;
+}
+.timeline li {
+  flex: 1;
+  max-width: 260px;
+}
+.node {
+  width: 100%;
+  min-height: 56px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: #f7fafc;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.3;
+  padding: 4px 6px;
+  border-bottom: 5px solid var(--c);
+}
+.node b {
+  font-size: 1.1rem;
+}
+.node span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.node.past {
+  background: #eaf3f8;
+}
+.node.on {
+  background: var(--stage-1);
+  border-color: var(--stage-1);
+  border-bottom-color: var(--c);
+  color: #fff;
+}
+.node.on span {
+  color: #cfe2f0;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 16px 14px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- presentation mode (projector, back of the room) ---------- */
+.present .lesson-bar {
+  padding-bottom: 0;
+}
+.present .lesson-title,
+.present .lesson-bar > .btn {
+  display: none;
+}
+.present .lesson-bar {
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  width: auto;
+  padding: 8px;
+}
+.present .seg {
+  display: none;
+}
+.app:has(.present) .header {
+  display: none;
+}
+.present {
+  min-height: 100vh;
+  height: 100vh;
+}
+.present .lesson {
+  grid-template-columns: minmax(0, 1.3fr) minmax(420px, 1fr);
+  height: calc(100vh - 80px);
+  max-width: none;
+  padding: 8px 12px;
+  min-height: 0;
+}
+.present .stage-col {
+  min-height: 0;
+}
+.present .stage {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+.present .stage-tools {
+  top: 56px;
+}
+.present .panel-col {
+  overflow: auto;
+}
+.present .tabs {
+  display: none;
+}
+.present .tab-body {
+  font-size: 1.75rem; /* 28px: classroom readability */
+  line-height: 1.7;
+  padding: 20px 24px;
+}
+.present .tab-body h2 {
+  font-size: 2.1rem;
+}
+.present .tab-body h3 {
+  font-size: 1.75rem;
+}
+.present .lead {
+  font-size: 1.9rem;
+}
+.present .controls {
+  padding: 8px 12px;
+  font-size: 1.2rem;
+}
+.present .legend {
+  font-size: 1.05rem;
+}
+.present .stage-badge .who {
+  font-size: 1.5rem;
+}
+.present .node {
+  min-height: 52px;
+}
+.present .node b {
+  font-size: 1.3rem;
+}
+.present .timeline {
+  position: static;
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 960px) {
+  .lesson {
+    grid-template-columns: 1fr;
+  }
+  .stage {
+    height: clamp(340px, 52vh, 560px);
+  }
+  .stage-hint {
+    display: none;
+  }
+  .legend {
+    max-width: calc(100% - 28px);
+    bottom: 10px;
+  }
+  .present .lesson {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+@media (max-width: 640px) {
+  .hide-sm {
+    display: none;
+  }
+  .node span {
+    display: none;
+  }
+  .lesson-bar {
+    padding-top: 8px;
+  }
+  .stage-tools {
+    top: 10px;
+    right: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .btn-tool {
+    min-height: 34px;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+  }
+  .stage-badge .year {
+    font-size: 1.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- periodic table ---------- */
+.pt-page {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 12px 16px 40px;
+}
+.pt-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.pt-h1 {
+  font-size: 1.5rem;
+  flex: 1 1 160px;
+}
+.pt-mode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pt-legend {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.pt-legend-title {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.pt-clear {
+  min-height: 34px;
+  padding: 0 12px;
+}
+.pt-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 8px;
+}
+.pt-key {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  line-height: 1.5;
+}
+.pt-key.on {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px var(--brand);
+}
+.pt-key i {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 29, 43, 0.35);
+}
+.pt-key small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.pt-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(58px, 1fr));
+  grid-template-rows: repeat(7, auto) 14px repeat(2, auto);
+  gap: 4px;
+  min-width: 1100px;
+}
+.pt-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px 2px 4px;
+  min-height: 72px;
+  border: 1px solid rgba(15, 29, 43, 0.35);
+  border-radius: 8px;
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 1.15;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.pt-cell:hover {
+  transform: scale(1.08);
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(11, 27, 43, 0.35);
+}
+.pt-cell.dim {
+  opacity: 0.18;
+}
+.pt-z {
+  align-self: flex-start;
+  margin-left: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+.pt-sym {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+.pt-name {
+  font-size: 0.68rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pt-mass {
+  font-size: 0.66rem;
+  color: #2c3b49;
+}
+.pt-ph,
+.pt-fnote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(15, 29, 43, 0.45);
+  color: var(--ink);
+}
+.pt-fnote {
+  justify-content: flex-start;
+  border: 0;
+  font-weight: 700;
+  padding-left: 4px;
+}
+.pt-hint {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+.pt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(11, 27, 43, 0.6);
+}
+.pt-dialog {
+  width: min(760px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pt-dialog-head {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.pt-title {
+  flex: 1;
+}
+.pt-title h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+.pt-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 110px;
+  padding: 6px;
+  border-radius: 14px;
+  border: 2px solid rgba(15, 29, 43, 0.5);
+  line-height: 1.2;
+  color: var(--ink);
+}
+.pt-big-z {
+  align-self: flex-start;
+  font-weight: 700;
+}
+.pt-big-sym {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.pt-big-mass {
+  font-size: 0.85rem;
+}
+.pt-dialog-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.pt-facts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 0;
+  align-content: start;
+}
+.pt-facts dt {
+  color: var(--muted);
+}
+.pt-facts dd {
+  margin: 0;
+  font-weight: 700;
+}
+.dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  vertical-align: middle;
+  border: 1px solid rgba(15, 29, 43, 0.4);
+}
+.pt-atom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.shell-svg {
+  width: 100%;
+  max-width: 240px;
+  align-self: center;
+}
+.pt-dialog-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+@media (max-width: 560px) {
+  .pt-dialog-head {
+    flex-wrap: wrap;
+  }
+}
+
+/* periodic table: 3D atom in the detail dialog */
+.pt-stage {
+  position: relative;
+  height: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 40%, var(--stage-2), var(--stage-1) 75%);
+}
+.pt-stage canvas {
+  display: block;
+  touch-action: none;
+}
+.pt-stage-tools {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.pt-stage-hint {
+  position: absolute;
+  left: 10px;
+  bottom: 6px;
+  margin: 0;
+  color: #cfe2f0;
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+.pt-mini-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px 14px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+.pt-mini-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+/* legend boxes: equal height across all rows */
+.pt-legend ul {
+  grid-auto-rows: 1fr;
+}
+.pt-legend li {
+  display: flex;
+}
+.pt-legend .pt-key {
+  height: 100%;
+}
+
+/* ---------- Edventure Tech logo + about ---------- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-badge,
+.corner-logo {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #070707;
+  cursor: pointer;
+  line-height: 0;
+}
+.logo-badge img {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+.corner-logo {
+  display: none;
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 30;
+  opacity: 0.75;
+}
+.corner-logo img {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+.app:has(.present) .corner-logo {
+  display: block;
+}
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 16px 56px;
+}
+.about-card {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.about-logo {
+  border-radius: 16px;
+  max-width: 100%;
+  height: auto;
+}
+.about-slogan {
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 6px;
+}
+.about-links {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.about-links .btn {
+  text-decoration: none;
+  color: var(--ink);
+  width: 100%;
+  gap: 12px;
+}
+
+/* element details: full screen (projector) */
+.pt-overlay.full {
+  padding: 0;
+}
+.pt-overlay.full .pt-dialog {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  border-radius: 0;
+  padding: 24px 32px;
+}
+.pt-overlay.full .pt-dialog-body {
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.4fr);
+  font-size: 1.25rem;
+}
+.pt-overlay.full .pt-stage {
+  height: min(62vh, 640px);
+}
+.pt-overlay.full .pt-title h2 {
+  font-size: 2.6rem;
+}
+.pt-overlay.full .pt-big {
+  width: 150px;
+}
+.pt-overlay.full .pt-big-sym {
+  font-size: 4rem;
+}
+.pt-overlay.full .pt-mini-legend {
+  font-size: 1.1rem;
+}
+.pt-overlay.full .pt-stage-hint {
+  font-size: 1rem;
+}
+
+/* ---------- M.2 lessons ---------- */
+.m2-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.m2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 20px;
+  align-items: end;
+}
+.m2-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.m2-slider input[type='range'] {
+  width: 100%;
+  min-height: 32px;
+  accent-color: var(--brand);
+}
+.m2-slider select {
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  padding: 4px 10px;
+  background: var(--surface);
+}
+.m2-result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.webgl-fail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 24px;
+  color: #fff;
+}
+
+.grade-hero {
+  margin-top: 12px;
+  padding: 24px 28px;
+}
+
+/* ---------- lower secondary: grade page, reading layout, quiz, motion sim ---------- */
+.topic-no {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.card.topic[aria-disabled='true'] {
+  opacity: 0.75;
+  background: #f1f4f7;
+  border-style: dashed;
+  border-top-style: solid;
+}
+.chip-solo {
+  margin-left: 0;
+}
+.chip-soon {
+  background: #e3e8ee;
+  color: #33414d;
+}
+.topic .btn {
+  margin-top: auto;
+}
+
+.reading {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 12px 16px 24px;
+  flex: 1;
+}
+.reading .panel {
+  border-top: 5px solid var(--accent);
+}
+.idea-cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.idea-cards li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.idea-cards li.on {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px var(--brand);
+  background: #eaf6fb;
+}
+.idea-n {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand-dark);
+  line-height: 1;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.quiz-set {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.quiz-q {
+  padding: 0;
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.quiz-opt {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  min-height: 52px;
+  padding: 8px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.quiz-opt input {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  accent-color: var(--brand);
+}
+.quiz-opt:has(input:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.quiz-opt.picked {
+  border-color: var(--brand);
+}
+.quiz-opt.good {
+  border-color: #1b7f3a;
+  background: #e6f5ea;
+}
+.quiz-opt.bad {
+  border-color: #b3261e;
+  background: #fdecea;
+}
+.quiz-opt-text {
+  flex: 1 1 200px;
+}
+.quiz-mark {
+  white-space: nowrap;
+}
+.quiz-opt.good .quiz-mark {
+  color: #14612c;
+}
+.quiz-opt.bad .quiz-mark {
+  color: #9c1c15;
+}
+.quiz-why {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1.5px solid;
+  font-size: 1.05rem;
+}
+.quiz-why.good {
+  border-color: #1b7f3a;
+  background: #e6f5ea;
+  color: #0f4a20;
+}
+.quiz-why.bad {
+  border-color: #b3261e;
+  background: #fdecea;
+  color: #7a1510;
+}
+.quiz-go {
+  align-self: flex-start;
+}
+.quiz-score {
+  font-size: 1.6rem;
+}
+.quiz-count {
+  font-weight: 700;
+}
+
+/* content-only lessons in presentation mode: one slide per item */
+.slides {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 64px 32px 16px;
+  min-height: 0;
+  overflow: auto;
+  font-size: 1.85rem;
+  line-height: 1.7;
+}
+.slide {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 28px 36px;
+  background: var(--surface);
+  border-radius: 24px;
+  border-top: 10px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.slide h2 {
+  font-size: 2.6rem;
+  line-height: 1.35;
+}
+.slide h3 {
+  font-size: 1.75rem;
+  color: var(--brand-dark);
+}
+.slide .lead {
+  font-size: 2rem;
+}
+.slide-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.slide-nav .btn {
+  min-height: 56px;
+  font-size: 1.3rem;
+  padding: 6px 24px;
+}
+.slide-count {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.present .quiz {
+  font-size: 1.75rem;
+}
+.present .quiz-q,
+.present .quiz-opt,
+.present .quiz-why {
+  font-size: 1.75rem;
+}
+.present .quiz-opt {
+  min-height: 72px;
+}
+.present .quiz-opt input {
+  width: 32px;
+  height: 32px;
+}
+.present .quiz .btn {
+  min-height: 56px;
+  font-size: 1.4rem;
+}
+.present .idea-cards li.on {
+  background: #dff1f8;
+}
+
+/* motion simulation */
+.mo-readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.mo-clock {
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+.mo-graph {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.mo-graph figcaption {
+  font-weight: 700;
+}
+.mo-graph svg {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  display: block;
+}
+.mo-grid {
+  stroke: #cfd8e0;
+  stroke-width: 1;
+}
+.mo-axis {
+  stroke: #33414d;
+  stroke-width: 1.5;
+}
+.mo-tick,
+.mo-label {
+  fill: #33414d;
+  font-size: 11px;
+}
+.mo-future {
+  fill: none;
+  stroke: #0a6c8f;
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  opacity: 0.7;
+}
+.mo-live {
+  fill: none;
+  stroke: #d84315;
+  stroke-width: 3.5;
+}
+.mo-dot {
+  fill: #d84315;
+  stroke: #0b1b2b;
+  stroke-width: 1.5;
+}
+.mo-graph-note {
+  font-size: 0.85rem;
+}
+.present .mo-tick,
+.present .mo-label {
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .slides {
+    padding: 56px 12px 12px;
+  }
+  .slide {
+    padding: 16px;
+  }
+  .tabs button {
+    font-size: 0.85rem;
+    padding: 0 2px;
+  }
+  .lesson-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* ---------- sims batch 1: photosynthesis, thermal, foodweb, reflection ---------- */
+.fw-remove {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fw-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.fw-table th,
+.fw-table td {
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.fw-table td i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.fw-table tr[data-effect='removed'] td {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+.m2-slider .seg {
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  .fw-table {
+    font-size: 0.9rem;
+  }
+  .fw-table th,
+  .fw-table td {
+    padding: 3px 4px;
+  }
+}
+
+/* presentation mode: sim controls stay usable and readable (the global .present .seg rule hides lesson-bar segs) */
+.present .m2-controls .seg {
+  display: inline-flex;
+}
+.present .m2-controls {
+  font-size: 1.3rem;
+}
+.present .m2-result,
+.present .fw-table {
+  font-size: 1.75rem;
+  line-height: 1.45;
+}
+.present .fw-table th,
+.present .fw-table td {
+  padding: 2px 8px;
+}
+.present .m2-result .faint {
+  font-size: 1.4rem;
+}
+.present .stage-col {
+  overflow: auto;
+}
+.present .stage {
+  min-height: 42vh;
+}
+
+/* ---------- second group of simulations: pendulum, circuit, states, solenoid, lens ---------- */
+.m2-controls .seg {
+  flex-wrap: wrap;
+}
+.m2-controls .seg button {
+  padding: 4px 12px;
+}
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1.2fr) minmax(80px, 2fr) auto;
+  gap: 4px 10px;
+  align-items: center;
+}
+.bar-track {
+  display: block;
+  height: 18px;
+  border-radius: 9px;
+  background: #e3e8ee;
+  overflow: hidden;
+}
+.bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 9px;
+}
+.bar-value {
+  min-width: 5.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.st-ideal {
+  font-weight: 600;
+  color: #7a3b00;
+}
+.mo-readout .fw-table {
+  font-size: 0.95rem;
+}
+@media (max-width: 480px) {
+  .bar-row {
+    grid-template-columns: 1fr auto;
+  }
+  .bar-track {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+  .m2-controls .seg button {
+    padding: 4px 8px;
+  }
+}
+.present .bar-track {
+  height: 24px;
+}
+.present .st-ideal {
+  font-size: 1.4rem;
+}
+.present .mo-readout .fw-table {
+  font-size: 1.75rem;
+}
+
+/* ---------- defect fixes: topic toggle, hint placement, reset row, presentation type >= 28px ---------- */
+.group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.group-toggle input {
+  width: 20px;
+  height: 20px;
+}
+.sim-reset-row {
+  margin-bottom: 8px;
+}
+/* hint sits top-left so it never collides with the bottom legend */
+.stage-hint.sim-hint {
+  top: 12px;
+  left: 14px;
+  right: auto;
+  bottom: auto;
+  text-align: left;
+  max-width: calc(100% - 300px);
+  pointer-events: none;
+}
+.present .stage-hint.sim-hint {
+  max-width: calc(100% - 28px);
+  top: 56px;
+  background: rgba(11, 27, 43, 0.65);
+  border-radius: 12px;
+  padding: 4px 12px;
+}
+.present .stage-tools {
+  top: 8px;
+  right: 76px;
+}
+.present .stage-tools .btn-tool,
+.present .legend,
+.present .legend li,
+.present .stage-hint,
+.present .m2-controls,
+.present .m2-controls label,
+.present .m2-controls span,
+.present .m2-controls button,
+.present .m2-controls select,
+.present .m2-controls input,
+.present .m2-controls b,
+.present .m2-controls .faint,
+.present .m2-controls .seg button,
+.present .m2-controls .btn,
+.present .m2-controls .chip,
+.present .m2-controls .bar-label,
+.present .m2-controls .bar-value,
+.present .m2-controls .fw-table,
+.present .m2-controls .fw-table th,
+.present .m2-controls .fw-table td,
+.present .m2-controls .st-ideal,
+.present .m2-controls .m2-result,
+.present .m2-controls .m2-result .faint,
+.present .chip,
+.present .slide-nav .btn,
+.present .slide-count,
+.present .quiz .btn,
+.present .quiz-count,
+.present .quiz-score,
+.present .quiz-mark,
+.present .idea-cards,
+.present .idea-cards li {
+  font-size: 1.75rem;
+}
+.present .legend i {
+  width: 18px;
+  height: 18px;
+}
+.present .stage-tools .btn-tool,
+.present .m2-controls .btn,
+.present .m2-controls .seg button {
+  min-height: 52px;
+}
+.present .m2-controls .m2-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.present .stage {
+  min-height: 46vh;
+}
+.present .mo-tick,
+.present .mo-label {
+  font-size: 28px;
+}
+.present .lesson-bar .btn,
+.present .bar-actions .btn {
+  font-size: 1.75rem;
+  min-height: 52px;
+}
+.present .mo-clock,
+.present .mo-clock * {
+  font-size: 1.75rem;
+}
+
+/* ---------- presentation layout v2: dedicated top bar, big stage, controls strip under it ---------- */
+.present {
+  overflow: hidden;
+}
+.present .lesson-bar {
+  position: static;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 6px 12px;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+}
+.present .lesson-bar .btn,
+.present .bar-actions .btn {
+  font-size: 1.375rem; /* app chrome, not teaching text */
+  min-height: 48px;
+}
+/* the hint is a how-to for the operator, not teaching content: hidden while projecting */
+.present .stage-hint,
+.present .stage-hint.sim-hint {
+  display: none;
+}
+.present .stage-tools {
+  top: 10px;
+  right: 10px;
+  left: auto;
+  flex-wrap: nowrap;
+}
+.present .stage-tools .btn-tool {
+  font-size: 1.25rem;
+  min-height: 46px;
+}
+.present .legend {
+  max-width: calc(100% - 24px);
+  left: 12px;
+  bottom: 10px;
+}
+.present .slides {
+  padding-top: 8px;
+}
+.present .panel-col {
+  min-height: 0;
+  padding-bottom: 72px; /* keeps text clear of the fixed corner logo */
+}
+.present .m2-controls,
+.present .m2-controls label,
+.present .m2-controls span,
+.present .m2-controls button,
+.present .m2-controls select,
+.present .m2-controls input,
+.present .m2-controls b,
+.present .m2-controls .seg button,
+.present .m2-controls .btn,
+.present .m2-controls .chip {
+  font-size: 1.375rem; /* control labels are chrome: >= 20px; readouts below stay 28px */
+}
+.present .m2-controls .m2-result,
+.present .m2-controls .m2-result *,
+.present .m2-controls .fw-table,
+.present .m2-controls .fw-table th,
+.present .m2-controls .fw-table td,
+.present .m2-controls .mo-readout,
+.present .m2-controls .mo-readout * {
+  font-size: 1.75rem;
+}
+.present .m2-controls .btn,
+.present .m2-controls .seg button {
+  min-height: 48px;
+}
+.present .controls {
+  padding: 8px 12px;
+}
+.present .m2-controls {
+  gap: 8px;
+}
+.present .m2-controls .m2-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 6px 16px;
+}
+@media (min-width: 961px) {
+  .present .lesson {
+    grid-template-columns: minmax(0, 1.5fr) minmax(400px, 1fr);
+    height: auto;
+    flex: 1 1 0;
+    min-height: 0;
+    padding: 4px 12px 8px;
+    overflow: hidden;
+  }
+  .present .stage-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .present .stage {
+    flex: 1 1 0;
+    height: auto;
+    min-height: 40%;
+  }
+  .present .stage-col > .controls,
+  .present .stage-col > .m2-controls {
+    flex: 0 1 auto;
+    max-height: 56%;
+    overflow: auto;
+  }
+  .present .panel-col {
+    height: 100%;
+    overflow: auto;
+  }
+}
+@media (max-width: 960px) {
+  .present {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+  .present .stage {
+    height: clamp(300px, 50vh, 560px);
+    min-height: 0;
+  }
+  .present .stage-col {
+    overflow: visible;
+  }
+  .present .lesson {
+    height: auto;
+  }
+}
+
+/* presentation: controls pack into wrapped rows so reset + play share a line; readout sits last */
+.present .m2-controls {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+.present .m2-controls > .m2-grid {
+  flex: 1 1 100%;
+}
+.present .m2-controls > .sim-reset-row {
+  order: 2;
+  margin: 0;
+}
+.present .m2-controls > .m2-result,
+.present .m2-controls > .mo-readout {
+  order: 3;
+  flex: 1 1 100%;
+}
+.present .controls .btn {
+  font-size: 1.375rem;
+  min-height: 48px;
+}
+.present .controls .eq,
+.present .controls .count,
+.present .controls .note,
+.present .controls p {
+  font-size: 1.75rem;
+  line-height: 1.4;
+}
+.present .timeline {
+  padding-right: 84px; /* clear of the fixed corner logo */
+}
+.present .node span {
+  font-size: 1.25rem;
+}
+.present .stage-col > .controls,
+.present .stage-col > .m2-controls {
+  max-height: 52%;
+}
+/* sims whose only button row is Reset keep it first (nothing to join it) */
+.present .m2-controls:not(:has(> .ctl-row:not(.sim-reset-row))) > .sim-reset-row {
+  order: 0;
+}
+.present .stage-col > .controls,
+.present .stage-col > .m2-controls {
+  max-height: 48%;
+}
+@media (max-width: 960px) {
+  .present .stage {
+    flex: 0 0 auto;
+    height: clamp(300px, 52vh, 520px);
+  }
+  .present .stage-col > .controls,
+  .present .stage-col > .m2-controls {
+    max-height: none;
+    overflow: visible;
+  }
+}
+/* colour key: compact so it does not cover the drawing (labels only, no sentences) */
+.present .legend,
+.present .legend li {
+  font-size: 1.5rem;
+}
+.present .legend {
+  gap: 2px 16px;
+  padding: 4px 12px;
+}
+
+/* ---------- presentation fixes: legend in flow (never over the drawing), buttons first, logo clearance ---------- */
+.present .stage {
+  display: flex;
+  flex-direction: column;
+}
+.present .stage > :first-child:not(.legend):not(.stage-tools) {
+  flex: 1 1 0;
+  min-height: 0;
+  height: auto !important;
+  width: 100%;
+}
+.present .stage > .legend {
+  position: static;
+  flex: 0 0 auto;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  padding: 2px 12px;
+  gap: 0 16px;
+  line-height: 1.25;
+  font-size: 1.5rem;
+  background: rgba(11, 27, 43, 0.92);
+}
+.present .stage > .legend:empty {
+  display: none;
+}
+/* the button rows come first in the controls strip so they are never cut */
+.present .m2-controls > .sim-reset-row,
+.present .m2-controls > .ctl-row {
+  order: -1;
+}
+.present .m2-controls:not(:has(> .ctl-row:not(.sim-reset-row))) > .sim-reset-row {
+  order: -1;
+}
+.present .panel-col {
+  padding-right: 84px; /* corner logo never covers panel text */
+  padding-bottom: 84px;
+}
+.present .stage-col > .controls,
+.present .stage-col > .m2-controls {
+  max-height: 44%;
+}
+@media (max-width: 960px) {
+  .present .stage-col > .controls,
+  .present .stage-col > .m2-controls {
+    max-height: none;
+  }
+}
+@media (min-width: 961px) {
+  .present .stage-col > .controls,
+  .present .stage-col > .m2-controls {
+    max-height: 36%;
+  }
+  .present .stage > .legend {
+    line-height: 1.15;
+    padding: 0 12px;
+  }
+  .present .stage {
+    min-height: 0;
+  }
+}
+/* foodweb: the Remove / Reset button row is listed first so it is never below the fold */
+.present .m2-controls .m2-grid:has(.fw-remove) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+.present .m2-controls .m2-grid:has(.fw-remove) > .m2-slider:has(.fw-remove) {
+  order: -1;
+  flex: 1 1 100%;
+}
+.present .m2-controls .m2-grid:has(.fw-remove) > .m2-slider:not(:has(.fw-remove)) {
+  flex: 1 1 240px;
+}
+.present .m2-controls > .m2-slider:has(.fw-remove) {
+  order: -1;
+  flex: 1 1 100%;
+}
+
+/* ----- upper secondary grade page: subject sections ----- */
+.subject-section { margin-top: 1.25rem; }
+.subject-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.subject-heading .swatch { background: var(--c); }
+.subject-hours { font-size: 0.8em; font-weight: 400; }
+.timeline ol { min-width: 0; }
+.timeline li { min-width: 0; }
+.chip-subject { background: var(--surface); border: 1px solid var(--line); }
+
+/* ---------- upper biology sims: cell, heart, population, genetics, selection ---------- */
+.ce-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ce-readout,
+.ht-readout,
+.pp-readout,
+.gn-readout,
+.sl-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.gn-seed {
+  min-height: 40px;
+  max-width: 9rem;
+  padding: 4px 8px;
+  border: 1px solid var(--line, #c5d0db);
+  border-radius: 8px;
+  font: inherit;
+}
+.sl-fixed {
+  margin: 0;
+}
+.gn-punnett {
+  border-collapse: separate;
+  border-spacing: 4px;
+  align-self: flex-start;
+  font-variant-numeric: tabular-nums;
+}
+.gn-punnett th {
+  font-weight: 700;
+  padding: 2px 6px;
+  text-align: center;
+}
+.gn-cell {
+  min-width: 3.6em;
+  min-height: 40px;
+  padding: 2px 8px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: #102027;
+}
+.gn-c0 {
+  background: #ffe0b2;
+}
+.gn-c1 {
+  background: #dcedc8;
+}
+.gn-c2 {
+  background: #a5d6a7;
+}
+.gn-cell:focus-visible {
+  outline: 3px solid #0b57d0;
+  outline-offset: 1px;
+}
+.gn-cell.on {
+  border-color: #102027;
+  box-shadow: 0 0 0 2px #ffeb3b;
+}
+/* the colour key of these sims is teaching text: 28 px, one line, below the drawing (never over it) */
+.present .stage-col:has(.ce-readout, .ht-readout, .pp-readout, .gn-readout, .sl-readout) .stage > .legend,
+.present .stage-col:has(.ce-readout, .ht-readout, .pp-readout, .gn-readout, .sl-readout) .stage > .legend li {
+  font-size: 1.75rem;
+}
+.present .gn-cell {
+  min-height: 44px;
+  font-size: 1.75rem;
+}
+.present .gn-punnett {
+  border-spacing: 3px;
+}
+.present .gn-punnett th {
+  padding: 0 6px;
+}
+.present .ce-picker {
+  gap: 4px;
+}
+
+/* ----- upper chemistry sims (upc-): mole, gaslaw, periodic, bonding, rate, acidbase, electrochem ----- */
+.upc-num {
+  min-height: 44px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  padding: 4px 10px;
+  background: var(--surface);
+  font: inherit;
+}
+.upc-check input {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+.upc-graph .mo-tick,
+.upc-graph .mo-label {
+  font-size: 14px;
+}
+.present .upc-graph .mo-tick,
+.present .upc-graph .mo-label {
+  font-size: 28px;
+}
+.upc-graph .upc-ref {
+  stroke: #78909c;
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+.upc-graph .upc-dot2 {
+  fill: #2e7d32;
+  stroke: #0b1b2b;
+  stroke-width: 1.5;
+}
+.upc-graph svg {
+  max-height: 340px;
+}
+.m2-controls .m2-slider select {
+  max-width: 100%;
+}
+.m2-controls .mo-readout > .m2-result sub {
+  font-size: 0.7em;
+}
+
+/* ---------- upper-secondary physics sims: SVG graphs (pg-*) shared by kinematics and induction ---------- */
+.pg {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.pg figcaption {
+  font-weight: 700;
+}
+.pg svg {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  display: block;
+}
+.pg-grid {
+  stroke: #cfd8e0;
+  stroke-width: 1;
+}
+.pg-axis {
+  stroke: #33414d;
+  stroke-width: 1.5;
+}
+.pg-tick,
+.pg-label {
+  fill: #33414d;
+  font-size: 12px;
+}
+.pg-line {
+  fill: none;
+  stroke: #d84315;
+  stroke-width: 3.5;
+}
+.pg-ghost {
+  fill: none;
+  stroke: #0a6c8f;
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  opacity: 0.75;
+}
+.pg-area {
+  fill: #4fc3f7;
+  opacity: 0.4;
+}
+.pg-seg {
+  fill: none;
+  stroke: #2e7d32;
+  stroke-width: 3.5;
+}
+.pg-ref {
+  stroke: #8d6e63;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+.pg-dot {
+  fill: #d84315;
+  stroke: #0b1b2b;
+  stroke-width: 1.5;
+}
+.pg-note {
+  font-size: 0.85rem;
+  margin: 2px 0 0;
+}
+/* presentation: axis text is scaled with the figure, so a smaller user-unit size already reads as >= 24px */
+.present .m2-controls .mo-readout .pg svg text {
+  font-size: 19px;
+}
+.present .pg svg {
+  max-height: 200px;
+}
+/* present mode: the readout (numbers, function text, Punnett square) comes right after the button rows, and the strip gets more height */
+.present .m2-controls > :is(.ce-readout, .ht-readout, .pp-readout, .gn-readout, .sl-readout) {
+  order: -1;
+}
+@media (min-width: 961px) {
+  .present .stage-col:has(.ce-readout, .ht-readout, .pp-readout, .gn-readout, .sl-readout) > .m2-controls {
+    max-height: 42%;
+  }
+}
+
+/* ---------- D-2: presentation legend >= 28 px, compact, max 2 rows; graph text sized by usePresentSvgText ---------- */
+.present .stage > .legend,
+.present .stage > .legend li {
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+.present .stage > .legend {
+  padding: 0 10px;
+  gap: 0 14px;
+  max-height: 2.4em;
+  overflow: hidden;
+}
+.present .stage > .legend li {
+  gap: 5px;
+  white-space: nowrap;
+}
+.present .stage > .legend i {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+.present .pg svg {
+  max-height: 260px;
+}
+
+/* ---------- D-5: presentation controls strip packs sliders/segments in 2 columns so primary controls are not below the fold ---------- */
+@media (min-width: 961px) {
+  .present .m2-controls > .m2-grid:not(:has(.fw-remove)) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 20px;
+    align-items: start;
+  }
+  .present .stage-col > .m2-controls {
+    max-height: 44%;
+  }
+}
+@media (min-width: 961px) {
+  /* D-5: strips that end in a readout/graph get more height; the stage shrinks to ~35% but stays larger than 300px at 720p */
+  .present .stage-col:has(> .m2-controls > .mo-readout) > .m2-controls {
+    max-height: 52%;
+  }
+  .present .stage-col:has(> .m2-controls > .mo-readout) > .stage {
+    min-height: 36%;
+  }
+  .present .m2-controls > .mo-readout .pg svg {
+    max-height: 150px;
+  }
+}
+@media (min-width: 961px) {
+  .present .stage-col > .m2-controls:has(.ce-readout, .ht-readout, .pp-readout, .gn-readout, .sl-readout, .mo-readout) .m2-grid > .m2-slider,
+  .present .stage-col > .m2-controls .seg {
+    margin-block: 0;
+  }
+  .present .m2-controls .seg button {
+    min-height: 40px;
+    padding-block: 2px;
+  }
+  .present .m2-controls .btn {
+    min-height: 40px;
+  }
+}
+@media (min-width: 961px) {
+  /* wider stage column: more controls per row, less height needed */
+  .present .lesson:has(.m2-controls > .mo-readout, .m2-controls > .pp-readout) {
+    grid-template-columns: minmax(0, 2fr) minmax(340px, 1fr);
+  }
+  .present .stage-col:has(> .m2-controls > .pp-readout) > .m2-controls {
+    max-height: 52%;
+  }
+  .present .m2-controls > .ctl-row {
+    flex: 1 1 auto;
+  }
+}
+@media (min-width: 961px) {
+  /* D-5: primary controls first; the readout follows and may scroll */
+  .present .m2-controls > .pp-readout {
+    order: 3;
+  }
+  .present .m2-controls > .ctl-row:not(.sim-reset-row) .btn,
+  .present .m2-controls > .ctl-row .seg button {
+    padding-inline: 10px;
+  }
+}
+@media (min-width: 961px) {
+  .present .m2-controls {
+    gap: 4px 12px;
+  }
+  .present .m2-controls .m2-grid {
+    gap: 2px 16px;
+  }
+  .present .m2-controls .seg button,
+  .present .m2-controls .btn {
+    min-height: 38px;
+  }
+  .present .m2-controls .m2-slider {
+    gap: 0;
+  }
+}
+
+/* readout moved into the right column in presentation mode */
+.present #sim-readout-slot:empty { display: none; }
+.present #sim-readout-slot .sim-readout-moved {
+  display: block;
+  max-height: none;
+  overflow: visible;
+  padding: 0 0 12px;
+}
+.present #sim-readout-slot .sim-readout-moved,
+.present #sim-readout-slot .sim-readout-moved * {
+  font-size: 1.75rem;
+}
+.present #sim-readout-slot .sim-readout-moved .pg svg {
+  max-height: 220px;
+}
+@media (min-width: 961px) {
+  .present .stage-col > .m2-controls {
+    max-height: 55%;
+  }
+  .present .stage-col > .stage {
+    min-height: 0;
+  }
+}
+
+/* ---------- top navigation (grades M.1-M.7 + tools) ---------- */
+.top-nav {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  justify-content: center;
+}
+.nav-link {
+  flex: 0 0 auto;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-link:hover { background: var(--line); }
+.nav-link.active { background: #4fc3f7; color: #06121d; }
+.nav-link:focus-visible { outline: 3px solid #ffd54f; outline-offset: 2px; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.feature-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  border-left: 8px solid var(--c, #4fc3f7);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.feature-btn strong { font-size: 1.25rem; }
+.feature-btn:hover { transform: translateY(-2px); }
+.feature-btn:focus-visible { outline: 3px solid #ffd54f; outline-offset: 2px; }
+.home-hint { margin-top: 1.5rem; }
+@media (max-width: 760px) {
+  .header { flex-wrap: wrap; }
+  .brand span { display: none; }
+  .top-nav { order: 3; flex: 1 1 100%; justify-content: flex-start; }
+}
+
+/* D-9: About page never overflows at 360px */
+.about { overflow-wrap: anywhere; }
+.about-card > * { min-width: 0; }
+.about-links li { min-width: 0; }
+.about-links .btn {
+  flex-wrap: wrap;
+  height: auto;
+  min-width: 0;
+  white-space: normal;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* auto-restart option for experiments that end */
+.auto-repeat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.auto-repeat input {
+  width: 22px;
+  height: 22px;
+  accent-color: #4fc3f7;
+}
+
+/* ---------- periodic table on phones: fixed-size cells, sideways scroll, zoom buttons ---------- */
+.pt-zoom {
+  display: none;
+  gap: 8px;
+  margin: 8px 0;
+}
+.pt-zoom .btn {
+  min-width: 48px;
+  min-height: 44px;
+  font-size: 1.25rem;
+}
+@media (max-width: 900px) {
+  .pt-zoom { display: flex; }
+}
+.pt-scroll {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y pinch-zoom;
+  overscroll-behavior-x: contain;
+}
+.pt-grid.fixed {
+  grid-template-columns: repeat(18, var(--pt-cell, 46px));
+  grid-template-rows: repeat(7, auto) 12px repeat(2, auto);
+  min-width: 0;
+  width: max-content;
+}
+.pt-grid.fixed .pt-cell {
+  min-height: calc(var(--pt-cell, 46px) * 1.1);
+  padding: 1px 1px 2px;
+  border-radius: 6px;
+}
+.pt-grid.fixed .pt-z { font-size: calc(var(--pt-cell, 46px) * 0.22); margin-left: 2px; }
+.pt-grid.fixed .pt-sym { font-size: calc(var(--pt-cell, 46px) * 0.38); }
+.pt-grid.fixed .pt-name { font-size: calc(var(--pt-cell, 46px) * 0.17); }
+.pt-grid.fixed .pt-mass { font-size: calc(var(--pt-cell, 46px) * 0.16); }
+.pt-grid.compact .pt-name,
+.pt-grid.compact .pt-mass { display: none; }
+.pt-grid.compact .pt-cell:hover { transform: none; }
+.pt-grid.fixed .pt-fnote { font-size: 0.7rem; }
+@media (max-width: 640px) {
+  /* legend becomes compact tappable chips so the table is visible without scrolling far */
+  .pt-legend ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pt-legend li {
+    display: block;
+  }
+  .pt-legend .pt-key {
+    width: auto;
+    height: auto;
+    padding: 6px 10px;
+    border-radius: 999px;
+    align-items: center;
+  }
+  .pt-key i { margin-top: 0; width: 16px; height: 16px; }
+  .pt-key small { display: none; }
+  .pt-key .faint { display: none; }
+}
+
+/* ---------- AI warning notice (home page) ---------- */
+.notice-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(11, 27, 43, 0.72);
+}
+.notice-dialog {
+  width: min(520px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  padding: 24px 22px;
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 4px solid #f9a825;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+.notice-icon {
+  font-size: 3rem;
+  line-height: 1;
+  color: #f9a825;
+}
+.notice-dialog h2 {
+  margin: 8px 0 12px;
+  font-size: 1.75rem;
+  color: #c62828;
+}
+.notice-lead {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.notice-dialog p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+.notice-wa {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: #1b8a4b;
+  border-color: #1b8a4b;
+}
+.notice-ok {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 52px;
+  font-size: 1.2rem;
+}
+
+/* header: contact the developer (WhatsApp) */
+.contact-dev {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+  background: #1b8a4b;
+  border-color: #1b8a4b;
+  font-weight: 700;
+}
+.contact-dev:hover { filter: brightness(1.1); }
+@media (max-width: 760px) {
+  .contact-dev-text { display: none; }
+  .contact-dev { padding-inline: 12px; }
+}
+
+/* curriculum source note + link */
+.curriculum-link { color: var(--brand-dark, #0b6e99); font-weight: 600; word-break: break-all; }
+.about-source { margin-top: 16px; padding: 12px 14px; border-left: 6px solid var(--brand, #4fc3f7); background: var(--surface); border-radius: 8px; }
+.home-source { margin-top: 12px; max-width: 70ch; }
+.notice-dialog .notice-source { font-size: 1rem; margin-top: 4px; }
+.foot .curriculum-link { font-weight: 600; }
+.notice-ok {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+}

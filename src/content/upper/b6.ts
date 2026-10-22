@@ -1,0 +1,247 @@
+import { quizItem as q, ready } from '../lower/build'
+import type { LessonDef } from '../lower/types'
+
+// Biology M.6 (Grade 11), upper-secondary curriculum 2011. 5 topics. Printed total 68 h; the five topic hours as printed
+// add to 67 (4 + 28 + 15 + 10 + 10) and are kept as printed. All ready. Lao text is an AI draft; teachers should review it.
+// REVIEW terms: ເນື້ອເຍື່ອ (tissue), ອະໄວຍະວະ (organ), ການປັບສົມດຸນ (homeostasis), ປະລິມານເລືອດອອກຕໍ່ນາທີ (cardiac output),
+//   ປະລິມານຕໍ່ການເຕັ້ນ (stroke volume), ຖົງລົມ (alveoli), ຮອກໂມນ (hormone), ພູມຕ້ານທານ (immunity), ລະບົບຖ່າຍເທ (excretory system),
+//   ຊີບພະຈອນ (pulse), ລະບົບນິເວດ (ecosystem), ປະຊາກອນ (population), ຄວາມໜາແໜ້ນ (density), ຄວາມຈຸ (carrying capacity),
+//   ເອັກໂປເນນຊຽນ / ໂລຈິສຕິກ (exponential / logistic), ປັດໃຈຈຳກັດ (limiting factor), ຊີ່ງກັນ ແລະ ກັນ (symbiosis),
+//   ຊີວະໂລກ (biosphere), ເຂດຊີວະນິເວດ (biome), ວົງຈອນກາກບອນ / ໄນໂຕຣແຊນ / ຟົດສະຝໍຣັດ (carbon / nitrogen / phosphorus cycle),
+//   ສານເສບຕິດ (addictive substance), ອາຫານ 5 ໝູ່ (five food groups).
+// Authoring notes: b6-02 includes the reproductive system and pregnancy and b6-05 covers alcohol, tobacco and drugs.
+// Both are written as plain facts; teachers may adapt the discussion and skip the activities for their class.
+// The heart and population sims are illustrative models (systole time and the logistic curve), as the lessons state.
+// Names of scientists stay in Latin letters; chemical symbols and formulas stay Latin.
+
+export const b6: LessonDef[] = [
+  ready({
+    id: 'b6-01',
+    title: ['ການຈັດລະບົບໃນຮ່າງກາຍຂອງຄົນເຮົາ', 'Organisation of the human body'],
+    hours: 4,
+    field: 'bio',
+    minutes: 20,
+    summary: [
+      'ຮ່າງກາຍຄົນຈັດເປັນລຳດັບ ຈຸລັງ → ເນື້ອເຍື່ອ → ອະໄວຍະວະ → ລະບົບ ແລະ ຮັກສາສະພາບພາຍໃນໃຫ້ສົມດຸນ.',
+      'The human body is organised from cells to tissues, organs and systems, and keeps its internal conditions in balance.',
+    ],
+    objectives: [
+      ['ບອກລຳດັບ ຈຸລັງ → ເນື້ອເຍື່ອ → ອະໄວຍະວະ → ລະບົບ ໃນຮ່າງກາຍຄົນ', 'State the order cell → tissue → organ → system in the human body'],
+      ['ບອກເນື້ອເຍື່ອ 4 ຊະນິດ', 'Name the four basic tissue types'],
+      ['ອະທິບາຍການປັບສົມດຸນ (homeostasis) ຢ່າງງ່າຍ', 'Explain homeostasis simply'],
+    ],
+    keyIdeas: [
+      ['ເນື້ອເຍື່ອ 4 ຊະນິດ: ປົກຄຸມ, ເຊື່ອມຕໍ່, ກ້າມເນື້ອ, ປະສາດ', 'Four tissues: epithelial, connective, muscle, nervous'],
+      ['ລະບົບອະໄວຍະວະຫຼາຍລະບົບ ເຮັດວຽກຮ່ວມກັນ', 'Several organ systems work together'],
+      ['ຮ່າງກາຍຮັກສາອຸນຫະພູມ ≈ 37 °C ແລະ ນ້ຳຕານໃນເລືອດ ໃຫ້ຄົງທີ່', 'The body keeps its temperature (≈ 37 °C) and blood sugar steady'],
+      ['ການຕອບສະໜອງ: ຮູ້ສຶກ → ຄວບຄຸມ → ປະຕິກິລິຍາ', 'Response: sense → control → react'],
+    ],
+    questions: [
+      ['ເປັນຫຍັງຮ່າງກາຍຕ້ອງຮັກສາອຸນຫະພູມໃຫ້ຄົງທີ່?', 'Why must the body keep a steady temperature?'],
+      ['ເວລາຮ້ອນ ລະບົບໃດແດ່ຂອງຮ່າງກາຍເຮັດວຽກ?', 'Which systems act when we are hot?'],
+    ],
+    activity: [
+      'ວັດອຸນຫະພູມຮ່າງກາຍ ແລະ ອັດຕາຫົວໃຈ ກ່ອນ-ຫຼັງແລ່ນ 2 ນາທີ',
+      'Measure body temperature and pulse before and after jogging for 2 minutes',
+    ],
+    quiz: [
+      q('b6-01-q1', ['ອັນໃດລຽງລຳດັບຖືກ ຈາກນ້ອຍໄປໃຫຍ່?', 'Which order is correct from small to large?'],
+        [['ຈຸລັງ → ເນື້ອເຍື່ອ → ອະໄວຍະວະ → ລະບົບ', 'Cell → tissue → organ → system'],
+         ['ອະໄວຍະວະ → ຈຸລັງ → ລະບົບ → ເນື້ອເຍື່ອ', 'Organ → cell → system → tissue'],
+         ['ລະບົບ → ອະໄວຍະວະ → ເນື້ອເຍື່ອ → ຈຸລັງ', 'System → organ → tissue → cell']], 0,
+        ['ຈຸລັງທີ່ຄ້າຍກັນລວມເປັນເນື້ອເຍື່ອ; ເນື້ອເຍື່ອຫຼາຍຊະນິດເປັນອະໄວຍະວະ.', 'Similar cells form a tissue; several tissues form an organ.']),
+      q('b6-01-q2', ['ເນື້ອເຍື່ອຊະນິດໃດ ບໍ່ແມ່ນເນື້ອເຍື່ອຫຼັກຂອງຮ່າງກາຍຄົນ?', 'Which is NOT one of the four basic human tissues?'],
+        [['ເນື້ອເຍື່ອປະສາດ', 'Nervous'], ['ເນື້ອເຍື່ອກ້າມເນື້ອ', 'Muscle'], ['ເນື້ອເຍື່ອລຳເລັງ (xylem)', 'Xylem']], 2,
+        ['Xylem ເປັນເນື້ອເຍື່ອຂອງພືດ.', 'Xylem is a plant tissue.']),
+      q('b6-01-q3', ['ເມື່ອອາກາດຮ້ອນ ຮ່າງກາຍປ່ອຍເຫື່ອ ເພື່ອຫຍັງ?', 'When it is hot the body sweats. What is this for?'],
+        [['ເພື່ອໃຫ້ອຸນຫະພູມຄົງທີ່ (ການປັບສົມດຸນ)', 'To keep the temperature steady (homeostasis)'],
+         ['ເພື່ອເພີ່ມນ້ຳໜັກ', 'To gain weight'],
+         ['ເພື່ອສ້າງພະລັງງານ', 'To make energy']], 0,
+        ['ເຫື່ອລະເຫີຍ ເອົາຄວາມຮ້ອນອອກຈາກຜິວໜັງ.', 'Evaporating sweat takes heat away from the skin.']),
+    ],
+  }),
+  ready({
+    id: 'b6-02',
+    title: ['ໂຄງປະກອບສ້າງ ແລະ ໜ້າທີ່ຂອງລະບົບຕ່າງໆໃນຮ່າງກາຍຄົນເຮົາ', 'Human body systems'],
+    hours: 28,
+    field: 'bio',
+    minutes: 45,
+    sim: 'heart',
+    summary: [
+      'ລະບົບຕ່າງໆຂອງຮ່າງກາຍ ເຊັ່ນ ຈະລາຈອນເລືອດ, ຫາຍໃຈ, ປະສາດ ແລະ ຮອກໂມນ ມີໂຄງສ້າງ ແລະ ໜ້າທີ່ສະເພາະ ແລະ ເຮັດວຽກສົມທົບກັນ.',
+      'Body systems such as the circulatory, respiratory, nervous and hormonal systems each have a structure and function and work together.',
+    ],
+    objectives: [
+      ['ອະທິບາຍລະບົບກ້າມ-ກະດູກ, ຍ່ອຍອາຫານ, ຈະລາຈອນເລືອດ, ຫາຍໃຈ ແລະ ຖ່າຍເທ', 'Explain the muscular-skeletal, digestive, circulatory, respiratory and excretory systems'],
+      ['ອະທິບາຍລະບົບປະສາດ, ຮອກໂມນ ແລະ ພູມຕ້ານທານ', 'Explain the nervous, hormonal and immune systems'],
+      ['ອະທິບາຍລະບົບສືບພັນ ແລະ ການຖືພາ ຢ່າງມີຂໍ້ເທັດຈິງ', 'Explain the reproductive system and pregnancy factually'],
+    ],
+    keyIdeas: [
+      ['ຫົວໃຈ 4 ຫ້ອງ: ເລືອດອຸດົມອົກຊີແຊນ ຢູ່ຂ້າງຊ້າຍ; ເລືອດອົກຊີແຊນຕ່ຳ ຢູ່ຂ້າງຂວາ ແລະ ໄປປອດ', 'Four chambers: oxygen-rich blood on the left; oxygen-poor blood on the right, sent to the lungs'],
+      ['ປະລິມານເລືອດອອກຕໍ່ນາທີ = ອັດຕາການເຕັ້ນ × ປະລິມານຕໍ່ການເຕັ້ນ (≈ 5 L/min ຕອນພັກ)', 'Cardiac output = heart rate × stroke volume (≈ 5 L/min at rest)'],
+      ['ປອດ: ແລກປ່ຽນກາສທີ່ຖົງລົມ (alveoli) ດ້ວຍການແຜ່ກະຈາຍ', 'Lungs: gas exchange in the alveoli by diffusion'],
+      ['ລະບົບປະສາດ ໄວ ແຕ່ສັ້ນ; ຮອກໂມນ ຊ້າ ແຕ່ຢູ່ດົນ', 'The nervous system is fast and short-lived; hormones are slower and longer-lasting'],
+    ],
+    questions: [
+      ['ເປັນຫຍັງເວລາອອກແຮງ ຫົວໃຈຈຶ່ງເຕັ້ນໄວຂຶ້ນ?', 'Why does the heart beat faster during exercise?'],
+      ['ເປັນຫຍັງຕ້ອງດື່ມນ້ຳ ຫຼັງອອກແຮງ?', 'Why should we drink water after exertion? (sweat and excretion)'],
+    ],
+    activity: [
+      'ຈັບຊີບພະຈອນທີ່ຂໍ້ມື ຕອນພັກ ແລະ ຫຼັງຂຶ້ນລົງຂັ້ນໄດ 1 ນາທີ ແລ້ວປຽບທຽບ',
+      'Take the pulse at the wrist at rest and after climbing stairs for a minute, then compare',
+    ],
+    quiz: [
+      q('b6-02-q1', ['ເລືອດຢູ່ຫ້ອງຫົວໃຈຂ້າງຊ້າຍ (LA, LV) ເປັນເລືອດແບບໃດ?', 'What kind of blood is in the left chambers (LA, LV)?'],
+        [['ເລືອດອົກຊີແຊນຕ່ຳ', 'Oxygen-poor'], ['ເລືອດອຸດົມອົກຊີແຊນ', 'Oxygen-rich'], ['ປະສົມກັນ', 'Mixed']], 1,
+        ['ເລືອດຈາກປອດກັບເຂົ້າ LA ແລ້ວ LV ສູບໄປທົ່ວຮ່າງກາຍ.', 'Blood from the lungs enters the LA and the LV pumps it to the body.']),
+      q('b6-02-q2', ['ຫົວໃຈເຕັ້ນ 72 ຄັ້ງ/ນາທີ ປະລິມານຕໍ່ການເຕັ້ນ 70 mL ປະລິມານເລືອດອອກຕໍ່ນາທີເທົ່າໃດ?', 'At 72 beats/min and 70 mL per beat, what is the cardiac output?'],
+        [['ປະມານ 5.04 L/min', 'About 5.04 L/min'], ['ປະມານ 0.5 L/min', 'About 0.5 L/min'], ['ປະມານ 50 L/min', 'About 50 L/min']], 0,
+        ['72 × 70 = 5040 mL = 5.04 L ຕໍ່ນາທີ.', '72 × 70 = 5040 mL = 5.04 L per minute.']),
+      q('b6-02-q3', ['ການແລກປ່ຽນກາສໃນປອດ ເກີດຂຶ້ນທີ່ໃດ ແລະ ດ້ວຍວິທີໃດ?', 'Where and how does gas exchange occur in the lungs?'],
+        [['ທີ່ຖົງລົມ ດ້ວຍການແຜ່ກະຈາຍ', 'In the alveoli, by diffusion'],
+         ['ທີ່ຫຼອດລົມ ດ້ວຍການສູບ', 'In the trachea, by pumping'],
+         ['ທີ່ກະເພາະ', 'In the stomach']], 0,
+        ['ຖົງລົມມີຜະໜັງບາງ ແລະ ມີເສັ້ນເລືອດຝອຍຫຸ້ມ.', 'Alveoli have thin walls surrounded by capillaries.']),
+      q('b6-02-q4', ['ລະບົບປະສາດແຕກຕ່າງຈາກຮອກໂມນແນວໃດ?', 'How does the nervous system differ from hormones?'],
+        [['ໄວ ແຕ່ຜົນສັ້ນ', 'Fast but short-lived'], ['ຊ້າ ແຕ່ຜົນສັ້ນ', 'Slow and short-lived'], ['ໄວ ແລະ ຜົນຍາວ', 'Fast and long-lasting']], 0,
+        ['ຮອກໂມນຜ່ານເລືອດ ຈຶ່ງຊ້າກວ່າ ແຕ່ຢູ່ດົນ.', 'Hormones travel in blood, so they are slower but last longer.']),
+    ],
+  }),
+  ready({
+    id: 'b6-03',
+    title: ['ການພົວພັນເຊິ່ງກັນ ແລະ ກັນ ລະຫວ່າງສິ່ງທີ່ມີຊີວິດກັບສະພາບແວດລ້ອມ', 'Living things and their environment: populations'],
+    hours: 15,
+    field: 'bio',
+    minutes: 35,
+    sim: 'population',
+    summary: [
+      'ສິ່ງມີຊີວິດພົວພັນກັບກັນ ແລະ ກັບສະພາບແວດລ້ອມ ແລະ ຂະໜາດປະຊາກອນຖືກຈຳກັດດ້ວຍຄວາມຈຸຂອງສິ່ງແວດລ້ອມ.',
+      'Living things interact with each other and their environment, and population size is limited by the carrying capacity.',
+    ],
+    objectives: [
+      ['ອະທິບາຍຄວາມໝາຍ ແລະ ຊະນິດຂອງລະບົບນິເວດ ແລະ ປັດໃຈ', 'Explain the meaning and kinds of ecosystems and factors'],
+      ['ອະທິບາຍຄວາມສຳພັນ: ແຂ່ງຂັນ, ລ່າ-ເຫຍື່ອ, ຊີ່ງກັນ ແລະ ກັນ', 'Explain relationships: competition, predation, symbiosis'],
+      ['ອະທິບາຍຂະໜາດ, ຄວາມໜາແໜ້ນ ແລະ ການເພີ່ມຂຶ້ນຂອງປະຊາກອນ', 'Explain population size, density and growth'],
+    ],
+    keyIdeas: [
+      ['ປະຊາກອນ: ສິ່ງມີຊີວິດຊະນິດດຽວກັນ ຢູ່ບ່ອນດຽວກັນ ເວລາດຽວກັນ', 'Population: one species in one place at one time'],
+      ['ຄວາມໜາແໜ້ນ = ຈຳນວນ ÷ ເນື້ອທີ່', 'Density = number ÷ area'],
+      ['ການເພີ່ມແບບເອັກໂປເນນຊຽນ (ຮູບ J) ແລະ ແບບໂລຈິສຕິກ (ຮູບ S) ຈຳກັດດ້ວຍຄວາມຈຸ K', 'Exponential (J) and logistic (S) growth, limited by the carrying capacity K'],
+      ['ປັດໃຈຈຳກັດ: ອາຫານ, ທີ່ຢູ່, ພະຍາດ, ຜູ້ລ່າ', 'Limiting factors: food, space, disease, predators'],
+    ],
+    questions: [
+      ['ເປັນຫຍັງປະຊາກອນບໍ່ເພີ່ມຂຶ້ນຕະຫຼອດໄປ?', 'Why does a population not grow forever?'],
+      ['ປາ 200 ໂຕ ໃນໜອງ 4 ເຮັກຕາ ຄວາມໜາແໜ້ນເທົ່າໃດ?', '200 fish in a 4 ha pond: what is the density? (50 per ha)'],
+    ],
+    activity: [
+      'ນັບພືດໃນພື້ນທີ່ 1 m² ຢູ່ສອງບ່ອນ ແລ້ວຄິດຄວາມໜາແໜ້ນ ແລະ ປຽບທຽບ',
+      'Count plants in 1 m² at two sites, calculate the densities and compare',
+    ],
+    quiz: [
+      q('b6-03-q1', ['ປາ 200 ໂຕ ໃນໜອງ 4 ເຮັກຕາ ມີຄວາມໜາແໜ້ນເທົ່າໃດ?', '200 fish in a 4 ha pond: what is the density?'],
+        [['50 ໂຕ/ເຮັກຕາ', '50 per ha'], ['800 ໂຕ/ເຮັກຕາ', '800 per ha'], ['4 ໂຕ/ເຮັກຕາ', '4 per ha']], 0,
+        ['ຄວາມໜາແໜ້ນ = 200 ÷ 4 = 50.', 'Density = 200 ÷ 4 = 50.']),
+      q('b6-03-q2', ['ການເພີ່ມປະຊາກອນຮູບ S (ໂລຈິສຕິກ) ເກີດຂຶ້ນ ເພາະຫຍັງ?', 'Why does a population show S-shaped (logistic) growth?'],
+        [['ມີຄວາມຈຸ K ຂອງສິ່ງແວດລ້ອມ ຈຳກັດ', 'The environment has a carrying capacity K'],
+         ['ອັດຕາເກີດບໍ່ມີຂີດຈຳກັດ', 'Birth rate has no limit'],
+         ['ສິ່ງມີຊີວິດບໍ່ຕາຍ', 'Organisms never die']], 0,
+        ['ເມື່ອ N ໃກ້ K ອັດຕາເພີ່ມຊ້າລົງ ແລະ ປະຊາກອນຄົງທີ່ຢູ່ໃກ້ K.', 'As N nears K growth slows and the population levels off near K.']),
+      q('b6-03-q3', ['ຄວາມສຳພັນ ເສືອກິນກວາງ ແມ່ນແບບໃດ?', 'What kind of relationship is a tiger eating a deer?'],
+        [['ການລ່າ-ເຫຍື່ອ', 'Predation'], ['ການແຂ່ງຂັນ', 'Competition'], ['ການເປັນຜົນປະໂຫຍດຮ່ວມກັນ', 'Mutualism']], 0,
+        ['ຜູ້ລ່າໄດ້ປະໂຫຍດ ເຫຍື່ອເສຍປະໂຫຍດ.', 'The predator gains and the prey loses.']),
+      q('b6-03-q4', ['ອັນໃດ ເປັນປັດໃຈຈຳກັດການເພີ່ມຂຶ້ນຂອງປະຊາກອນ?', 'Which is a limiting factor for population growth?'],
+        [['ການຂາດອາຫານ ຫຼື ທີ່ຢູ່', 'Shortage of food or space'], ['ສີຂອງສັດ', 'The colour of the animals'], ['ຊື່ຂອງຊະນິດ', 'The name of the species']], 0,
+        ['ອາຫານ, ທີ່ຢູ່, ພະຍາດ ແລະ ຜູ້ລ່າ ຈຳກັດຂະໜາດປະຊາກອນ.', 'Food, space, disease and predators limit population size.']),
+    ],
+  }),
+  ready({
+    id: 'b6-04',
+    title: ['ໂລກຂອງສິ່ງທີ່ມີຊີວິດ ຫຼື ຊີວະໂລກ', 'The biosphere'],
+    hours: 10,
+    field: 'bio',
+    minutes: 30,
+    sim: 'foodweb',
+    summary: [
+      'ໃນຊີວະໂລກ ພະລັງງານໄຫຼທາງດຽວ ແລະ ທາດຕ່າງໆໝູນວຽນ ເຊັ່ນ ກາກບອນ ແລະ ໄນໂຕຣແຊນ.',
+      'In the biosphere energy flows one way while matter such as carbon and nitrogen cycles.',
+    ],
+    objectives: [
+      ['ອະທິບາຍຂອບເຂດ ແລະ ເຂດຊີວະນິເວດຂອງໂລກ', 'Explain the biosphere and the main biomes'],
+      ['ອະທິບາຍວົງຈອນກາກບອນ, ໄນໂຕຣແຊນ, ນ້ຳ ແລະ ຟົດສະຝໍຣັດ', 'Explain the carbon, nitrogen, water and phosphorus cycles'],
+      ['ອະທິບາຍການຖ່າຍທອດພະລັງງານ ໃນລະບົບນິເວດ', 'Explain energy flow in ecosystems'],
+    ],
+    keyIdeas: [
+      ['ພະລັງງານໄຫຼທາງດຽວ (ແສງຕາເວັນ → ຄວາມຮ້ອນ); ທາດໝູນວຽນ', 'Energy flows one way (sun → heat); matter cycles'],
+      ['ພະລັງງານປະມານ 10% ສົ່ງຕໍ່ຂັ້ນຕໍ່ໄປ (ກົດປະມານ)', 'About 10% of the energy passes to the next level (a rule of thumb)'],
+      ['ວົງຈອນກາກບອນ: ສັງເຄາະແສງ ↔ ຫາຍໃຈ, ການເຜົາ ແລະ ການຍ່ອຍສະຫຼາຍ', 'Carbon cycle: photosynthesis ↔ respiration, burning and decay'],
+      ['ແບັກທີເຣຍ ປ່ຽນໄນໂຕຣແຊນໃນອາກາດ ເປັນຮູບທີ່ພືດໃຊ້ໄດ້', 'Bacteria convert atmospheric nitrogen into forms plants can use'],
+    ],
+    questions: [
+      ['ເປັນຫຍັງຕ່ອງໂສ້ອາຫານບໍ່ຍາວເກີນ 4-5 ຂັ້ນ?', 'Why are food chains rarely longer than 4-5 levels?'],
+      ['ການຕັດໄມ້ທຳລາຍປ່າ ກະທົບວົງຈອນກາກບອນແນວໃດ?', 'How does deforestation affect the carbon cycle?'],
+    ],
+    activity: [
+      'ແຕ້ມແຜນຜັງວົງຈອນກາກບອນ ໃສ່ຮູບປ່າຂອງລາວ ແລະ ໝາຍລູກສອນ',
+      'Draw a carbon-cycle diagram on a picture of a Lao forest and mark the arrows',
+    ],
+    quiz: [
+      q('b6-04-q1', ['ເຮົາເວົ້າວ່າ "ພະລັງງານໄຫຼທາງດຽວ" ໝາຍຄວາມວ່າແນວໃດ?', 'What does "energy flows one way" mean?'],
+        [['ພະລັງງານຈາກແສງຕາເວັນ ຜ່ານຕ່ອງໂສ້ອາຫານ ແລ້ວສູນເສຍເປັນຄວາມຮ້ອນ ບໍ່ກັບມາໃຊ້ໃໝ່', 'Energy from the sun passes along the food chain and is lost as heat; it is not recycled'],
+         ['ພະລັງງານໝູນວຽນເປັນວົງ', 'Energy cycles round in a loop'],
+         ['ພະລັງງານເພີ່ມຂຶ້ນແຕ່ລະຂັ້ນ', 'Energy increases at each level']], 0,
+        ['ທາດໝູນວຽນ ແຕ່ພະລັງງານບໍ່.', 'Matter cycles but energy does not.']),
+      q('b6-04-q2', ['ຜູ້ຜະລິດມີ 10 000 kJ ຜູ້ບໍລິໂພກຂັ້ນ 1 ໄດ້ປະມານເທົ່າໃດ (ກົດ 10%)?', 'A producer level has 10 000 kJ. About how much reaches the first consumer (10% rule)?'],
+        [['1 000 kJ', '1 000 kJ'], ['5 000 kJ', '5 000 kJ'], ['100 kJ', '100 kJ']], 0,
+        ['10% ຂອງ 10 000 = 1 000 kJ; ສ່ວນຫຼາຍສູນເສຍເປັນຄວາມຮ້ອນ.', '10% of 10 000 = 1 000 kJ; most is lost as heat.']),
+      q('b6-04-q3', ['ຂະບວນການໃດດຶງ CO₂ ອອກຈາກອາກາດ?', 'Which process removes CO₂ from the air?'],
+        [['ການສັງເຄາະດ້ວຍແສງ', 'Photosynthesis'], ['ການຫາຍໃຈ', 'Respiration'], ['ການເຜົາໄມ້', 'Burning wood']], 0,
+        ['ພືດໃຊ້ CO₂ ສ້າງກລູໂຄສ.', 'Plants use CO₂ to make glucose.']),
+      q('b6-04-q4', ['ເປັນຫຍັງຕ່ອງໂສ້ອາຫານຈຶ່ງບໍ່ຍາວເກີນ 4-5 ຂັ້ນ?', 'Why are food chains seldom longer than 4-5 levels?'],
+        [['ພະລັງງານຫຼຸດລົງຫຼາຍໃນແຕ່ລະຂັ້ນ', 'Much energy is lost at each level'],
+         ['ສັດບໍ່ມີ', 'There are no animals'],
+         ['ພືດຕາຍໝົດ', 'Plants all die']], 0,
+        ['ປະມານ 90% ສູນເສຍກ່ອນຮອດຂັ້ນຕໍ່ໄປ.', 'About 90% is lost before the next level.']),
+    ],
+  }),
+  ready({
+    id: 'b6-05',
+    title: ['ການສ້າງຄຸນນະພາບຊີວິດ', 'Building quality of life'],
+    hours: 10,
+    field: 'bio',
+    minutes: 30,
+    summary: [
+      'ອາຫານຄົບຖ້ວນ, ອອກກຳລັງກາຍ, ສຸຂະພາບຈິດ ແລະ ການຫຼີກລ່ຽງສານເສບຕິດ ສ້າງຄຸນນະພາບຊີວິດທີ່ດີ.',
+      'Balanced food, exercise, mental health and avoiding addictive substances build a good quality of life.',
+    ],
+    objectives: [
+      ['ອະທິບາຍຄວາມສຳຄັນຂອງອາຫານ ແລະ ສຸຂະພາບ', 'Explain the importance of food and health'],
+      ['ບອກວິທີເລືອກ ແລະ ເກັບຮັກສາອາຫານໃຫ້ປອດໄພ', 'Explain how to choose and store food safely'],
+      ['ບອກຜົນຮ້າຍຂອງສານເສບຕິດ ແລະ ພຶດຕິກຳສ່ຽງ', 'State the harm of addictive substances and risky behaviour'],
+    ],
+    keyIdeas: [
+      ['ອາຫານ 5 ໝູ່ ແລະ ພະລັງງານທີ່ຕ້ອງການຕໍ່ວັນ ຂຶ້ນຢູ່ກັບອາຍຸ ແລະ ກິດຈະກຳ', 'Five food groups; daily energy need depends on age and activity'],
+      ['ອອກກຳລັງກາຍສະໝ່ຳສະເໝີ ຢ່າງໜ້ອຍ 30 ນາທີ/ວັນ', 'Exercise regularly, at least 30 minutes a day'],
+      ['ສຸຂະພາບຈິດ: ນອນພໍ, ເວົ້າລົມ, ຈັດການຄວາມຄຽດ', 'Mental health: enough sleep, talking, managing stress'],
+      ['ເຫຼົ້າ, ຢາສູບ ແລະ ຢາເສບຕິດ ທຳລາຍປອດ, ຕັບ, ສະໝອງ ແລະ ກະທົບຄອບຄົວ', 'Alcohol, tobacco and drugs harm the lungs, liver and brain and affect the family'],
+    ],
+    questions: [
+      ['ວິທີປະຕິເສດຢ່າງສຸພາບ ເມື່ອຖືກຊັກຊວນໃຫ້ສູບຢາ ແມ່ນຫຍັງ?', 'How can you refuse politely when pressured to smoke?'],
+      ['ນັກຮຽນຄວນນອນຫຼັບຈັກຊົ່ວໂມງຕໍ່ຄືນ ແລະ ເພາະຫຍັງ?', 'How many hours should students sleep, and why? (about 8-10)'],
+    ],
+    activity: [
+      'ບັນທຶກອາຫານ ແລະ ການນອນ 3 ວັນ ແລ້ວປະເມີນຕົນເອງ (ເກັບເປັນສ່ວນຕົວ)',
+      'Keep a 3-day food and sleep diary and self-assess (kept private)',
+    ],
+    quiz: [
+      q('b6-05-q1', ['ນັກຮຽນຄວນນອນຫຼັບປະມານຈັກຊົ່ວໂມງຕໍ່ຄືນ?', 'About how many hours should students sleep each night?'],
+        [['3-4 ຊົ່ວໂມງ', '3-4 hours'], ['8-10 ຊົ່ວໂມງ', '8-10 hours'], ['14-16 ຊົ່ວໂມງ', '14-16 hours']], 1,
+        ['ໄວລຸ້ນຕ້ອງການນອນ ປະມານ 8-10 ຊົ່ວໂມງ ເພື່ອການເຕີບໃຫຍ່ ແລະ ການຮຽນຮູ້.', 'Teenagers need about 8-10 hours for growth and learning.']),
+      q('b6-05-q2', ['ການອອກກຳລັງກາຍທີ່ແນະນຳ ແມ່ນເທົ່າໃດ?', 'How much exercise is recommended?'],
+        [['ຢ່າງໜ້ອຍ 30 ນາທີ/ວັນ', 'At least 30 minutes a day'], ['5 ນາທີ/ເດືອນ', '5 minutes a month'], ['ບໍ່ຈຳເປັນ', 'None is needed']], 0,
+        ['ການອອກກຳລັງສະໝ່ຳສະເໝີ ຊ່ວຍຫົວໃຈ ແລະ ຈິດໃຈ.', 'Regular exercise helps the heart and the mind.']),
+      q('b6-05-q3', ['ອະໄວຍະວະໃດ ເສຍຫາຍຈາກການສູບຢາ ເປັນຫຼັກ?', 'Which organ is mainly damaged by smoking?'],
+        [['ປອດ', 'Lungs'], ['ກະດູກແຂນ', 'Arm bones'], ['ຜົມ', 'Hair']], 0,
+        ['ຄວັນຢາສູບ ມີສານເຄມີທີ່ທຳລາຍປອດ ແລະ ເສັ້ນເລືອດ.', 'Tobacco smoke contains chemicals that damage the lungs and blood vessels.']),
+    ],
+  }),
+]
