@@ -29,3 +29,6 @@ dist-ssr
 # unrelated local images
 enhanced/
 trucks-blue-sky.jpg
+
+# single-file hand-out build
+dist-single

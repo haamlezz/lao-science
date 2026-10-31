@@ -74,6 +74,10 @@ It is a static site (`npm run build` → `dist/`) with hash routing, so no serve
 - **Netlify:** build command `npm run build`, publish directory `dist` (see `netlify.toml`).
 - **Cloudflare Pages:** framework preset *None*, build command `npm run build`, output directory `dist`, environment variable `NODE_VERSION=22`.
 
+## Offline single-file version
+
+`npm run build:single` builds one self-contained HTML file (JS, CSS, fonts and logo inlined, about 2 MB) at `dist-single/edventure-science.html`. It opens by double-click (`file://`) in a modern Chrome, Edge or Firefox; there is no service worker and it does not update itself. A ready-made copy is committed at [`downloads/edventure-science.html`](downloads/edventure-science.html); with GitHub Pages enabled it can be opened online at `https://haamlezz.github.io/lao-science/downloads/edventure-science.html`.
+
 ## Known issues
 
 See `docs/dev-team/test-report-regression.md`. Main open items: in presentation mode a few lessons (force m2-04, genetics b7-03, and some at 1280×720) still have a cut-off controls strip; the top navigation clips below ~1400 px; offline behaviour and real-GPU performance on the deployed site are not yet verified. Lao text still needs teacher review.
